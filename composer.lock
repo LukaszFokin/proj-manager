@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9ddcdea62d88f10d8c73dcf802db8c67",
-    "content-hash": "7ffdd7d57da5b0ec38b858c21061868e",
+    "hash": "a0775188c8cac2b2ef10a50e431362ca",
+    "content-hash": "ca472da9a0a404218b2e03857ef3619a",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -46,6 +46,46 @@
                 "web"
             ],
             "time": "2016-03-24 14:31:41"
+        },
+        {
+            "name": "caouecs/laravel4-lang",
+            "version": "2.0.42",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "f92481561cddff8771cf7622ef969d9bc6ed3d79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/f92481561cddff8771cf7622ef969d9bc6ed3d79",
+                "reference": "f92481561cddff8771cf7622ef969d9bc6ed3d79",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2016-03-22 21:53:38"
         },
         {
             "name": "classpreloader/classpreloader",
