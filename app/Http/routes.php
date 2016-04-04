@@ -10,6 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/register', 'RegisterController@index');
-Route::post('/register/save', 'RegisterController@store');
+Route::auth();
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
