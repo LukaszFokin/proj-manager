@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Base\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -14,7 +14,7 @@ class Controller extends BaseController
 
     /**
      * Var to define if access to controller is restricted by authenticated user
-     * 
+     *
      * @var bool
      */
     protected $restricted = true;
