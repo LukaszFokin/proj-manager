@@ -15,7 +15,8 @@
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-
+            <li class="header">MENU</li>
+            <li><a href="{{ url('/users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

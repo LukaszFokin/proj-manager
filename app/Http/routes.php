@@ -13,3 +13,6 @@
 Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
+
+/* Users crud route */
+Route::resource('users', 'UserController');
