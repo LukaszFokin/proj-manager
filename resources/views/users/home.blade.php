@@ -30,6 +30,14 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{!! getStatusBox($user->status) !!}</td>
+                            <td>
+                                @if (!isDeleted($user->status))
+                                <a href="{{ route('users.edit', [$user->id]) }}" class="btn btn-info btn-xs">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    Edit
+                                </a>
+                                @endif
+                            </td>
                             <td></td>
                         </tr>
                     @endforeach
