@@ -32,7 +32,7 @@ function getStatusBox($status)
  * Get active class to an menu item
  *
  * @param $route Route to be validated
- * 
+ *
  * @return string
  */
 function getActive($route)
@@ -40,5 +40,5 @@ function getActive($route)
     $actualRoute = \Route::getCurrentRoute()->getCompiled()->getStaticPrefix();
 
     if(preg_match("/{$route}/", $actualRoute))
-        return ' active';
+        return 'active';
 }
