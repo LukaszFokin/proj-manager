@@ -25,4 +25,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function getRules($id = null) {
+        $rules = [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users,email,'.$id,
+            'password' => 'required|min:6|confirmed'
+        ];
+
+        if($id)
+            $rules['password'] = 'min:6|confirmed';
+
+        return $rules;
+    }
 }

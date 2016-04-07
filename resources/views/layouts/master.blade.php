@@ -44,6 +44,7 @@
 
         <!-- Main content -->
         <section class="content">
+            @include('_partials.messages')
             @yield('content')
         </section>
         <!-- /.content -->

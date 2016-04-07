@@ -4,9 +4,9 @@ const DISABLED = 0;
 const ACTIVATED = 1;
 const DELETED = 2;
 
-const LABEL_DISABLED = 'DISABLED';
-const LABEL_ACTIVATED = 'ACTIVATED';
-const LABEL_DELETED = 'DELETED';
+const LABEL_DISABLED = 'Disabled';
+const LABEL_ACTIVATED = 'Activated';
+const LABEL_DELETED = 'Deleted';
 
 
 /**

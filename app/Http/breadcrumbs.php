@@ -5,11 +5,19 @@ Breadcrumbs::register('home', function($breadcrumbs)
     $breadcrumbs->push('Home', url('/'));
 });
 
-// Users
+// Home > Users
 Breadcrumbs::register('users', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Users');
+    $breadcrumbs->push('Users', url('users'));
 });
+
+// Home > User > [User]
+Breadcrumbs::register('userEdit', function($breadcrumbs, $user)
+{
+    $breadcrumbs->parent('users');
+    $breadcrumbs->push($user->name);
+});
+
 /*
 
 // Home > About

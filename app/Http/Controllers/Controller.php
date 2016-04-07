@@ -29,4 +29,24 @@ class Controller extends BaseController
         if($this->restricted)
             $this->middleware('auth');
     }
+
+    protected function addInfoMessage($message)
+    {
+        \Session::flash('alert-info', $message);
+    }
+
+    protected function addErrorMessage($message)
+    {
+        \Session::flash('alert-danger', $message);
+    }
+
+    protected function addWarningMessage($message)
+    {
+        \Session::flash('alert-warning', $message);
+    }
+
+    protected function addSuccessMessage($message)
+    {
+        \Session::flash('alert-success', $message);
+    }
 }

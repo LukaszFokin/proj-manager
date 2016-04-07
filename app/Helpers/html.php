@@ -42,3 +42,54 @@ function getActive($route)
     if(preg_match("/{$route}/", $actualRoute))
         return 'active';
 }
+
+/**
+ * Get a select options with available status
+ *
+ * @param string $name
+ * @param integer $selected
+ * @param string $optionDefault
+ * @return mixed
+ *
+ */
+function getStatusSelect($name = 'status', $selected = null, $optionDefault = '<< Choose >>')
+{
+    $list = [];
+
+    if ($optionDefault)
+        $list[''] = $optionDefault;
+
+    $list[ACTIVATED] = LABEL_ACTIVATED;
+    $list[DISABLED] = LABEL_DISABLED;
+
+    return BootForm::select($name, null, $list, $selected);
+}
+
+/**
+ * Returns a icon string according
+ *
+ * @param string $alert
+ * 
+ * @return string
+ */
+function getAlertIcon($alert)
+{
+    switch ($alert)
+    {
+        case 'danger':
+            $icon = 'ban';
+            break;
+        case 'warning':
+            $icon = 'warning';
+            break;
+        case 'success':
+            $icon = 'check';
+            break;
+        case 'info':
+            $icon = 'info';
+            break;
+    }
+
+    return $icon;
+}
+

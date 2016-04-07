@@ -59,18 +59,42 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-       
+        $user = User::find($id);
+
+        if(isDeleted($user->status)) {
+            $this->addWarningMessage('Deleted users cannot be updated');
+
+            return redirect('/users');
+        }
+
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param   Request $request
+     * @param   int  $id
+     *
+     * @return  Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        //
+        $model = new User();
+        $data = $request->input();
+
+        $this->validate($request, $model->getRules($id));
+
+        $user = $model->find($id);
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->status = $data['status'];
+        $user->password = $data['password']? bcrypt($data['password']) : $user->password;
+        $user->update();
+
+        $this->addSuccessMessage('User updated successfully');
+
+        return redirect('/users');
     }
 
     /**
