@@ -48,12 +48,12 @@ class UserController extends Controller
 
         $data = $request->input();
 
-        $user->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'status' => ACTIVATED
-        ]);
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->status = ACTIVATED;
+        $user->image = $this->upload($request);
+        $user->save();
 
         $this->addSuccessMessage('User created successfully');
 
@@ -110,6 +110,7 @@ class UserController extends Controller
         $user->email = $data['email'];
         $user->status = $data['status'];
         $user->password = $data['password']? bcrypt($data['password']) : $user->password;
+        $user->image = $this->upload($request, $user->image);
         $user->update();
 
         $this->addSuccessMessage('User updated successfully');
@@ -130,5 +131,29 @@ class UserController extends Controller
         $this->addSuccessMessage('User deleted successfully');
 
         return redirect('/users');
+    }
+
+    protected function upload(Request $request, $deleteImage = null)
+    {
+        $image = $deleteImage;
+
+        if($request->hasFile('image')) {
+            $directoryPath = public_path('img/users');
+
+            // Delete old image
+            \File::delete("{$directoryPath}/{$deleteImage}");
+
+            $file = $request->file('image');
+
+            $image = md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
+
+            $file->move($directoryPath, $image);
+
+            \Image::make("{$directoryPath}/{$image}")->fit(300, 300, function($constraint) {
+                $constraint->aspectRatio();
+            })->save();
+        }
+
+        return $image;
     }
 }

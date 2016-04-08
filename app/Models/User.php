@@ -31,7 +31,8 @@ class User extends Authenticatable
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,'.$id,
             'password' => 'required|min:6|confirmed',
-            'status' => 'required'
+            'status' => 'required',
+            'image' => 'image'
         ];
 
         if($id)

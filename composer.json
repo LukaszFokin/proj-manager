@@ -11,7 +11,8 @@
 	"laravelcollective/html": "~5.0",
 	"caouecs/laravel4-lang": "~2.0",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "watson/bootstrap-form": "^1.0"
+        "watson/bootstrap-form": "^1.0",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
