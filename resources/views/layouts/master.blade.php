@@ -268,5 +268,10 @@
 <script src="{{ asset('dist/js/app.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+
+
+@yield('page-script')
+
+
 </body>
 </html>

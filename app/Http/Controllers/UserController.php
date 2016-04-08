@@ -17,7 +17,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
         $users = DB::table('users')
             ->where('name', 'LIKE', '%'.$request->input('search').'%')
             ->orWhere('name', 'LIKE', '%'.$request->input('search').'%')
@@ -126,6 +125,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id)->update(['status' => DELETED]);
+
+        $this->addSuccessMessage('User deleted successfully');
+
+        return redirect('/users');
     }
 }
