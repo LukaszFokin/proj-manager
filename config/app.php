@@ -210,5 +210,6 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
     ],
 ];

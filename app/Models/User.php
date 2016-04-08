@@ -30,7 +30,8 @@ class User extends Authenticatable
         $rules = [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,'.$id,
-            'password' => 'required|min:6|confirmed'
+            'password' => 'required|min:6|confirmed',
+            'status' => 'required'
         ];
 
         if($id)

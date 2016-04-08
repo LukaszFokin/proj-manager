@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,14 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
+
+        $users = DB::table('users')
+            ->where('name', 'LIKE', '%'.$request->input('search').'%')
+            ->orWhere('name', 'LIKE', '%'.$request->input('search').'%')
+            ->paginate(20);
+
         return view('users.home', ['users' => $users]);
     }
 
@@ -27,7 +33,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.form', ['user' => new User()]);
     }
 
     /**
@@ -35,9 +41,24 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $user = new User();
+
+        $this->validate($request, $user->getRules());
+
+        $data = $request->input();
+
+        $user->create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'status' => ACTIVATED
+        ]);
+
+        $this->addSuccessMessage('User created successfully');
+
+        return redirect('users');
     }
 
     /**
@@ -67,7 +88,7 @@ class UserController extends Controller
             return redirect('/users');
         }
 
-        return view('users.edit', ['user' => $user]);
+        return view('users.form', ['user' => $user]);
     }
 
     /**

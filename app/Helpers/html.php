@@ -21,6 +21,9 @@ function getStatusBox($status)
         case DELETED:
             $class = 'label-danger';
             break;
+        case NEW_USER:
+            $class = 'label-warning';
+            break;
         default:
             $class = 'label-default';
     }

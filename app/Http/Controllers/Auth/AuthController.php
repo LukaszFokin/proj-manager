@@ -68,7 +68,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $status = count(User::all())? 0 : 1;
+        $status = count(User::all())? NEW_USER : ACTIVATED;
 
         return User::create([
             'name' => $data['name'],
