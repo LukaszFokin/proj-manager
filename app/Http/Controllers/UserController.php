@@ -17,12 +17,23 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = DB::table('users')
-            ->where('name', 'LIKE', '%'.$request->input('search').'%')
-            ->orWhere('name', 'LIKE', '%'.$request->input('search').'%')
-            ->paginate(20);
+        $users = DB::table('users');
 
-        return view('users.home', ['users' => $users]);
+        // Check search
+        if($search = $request->input('search')) {
+            $users->where(function($query) use (&$search) {
+                $query->where('name', 'LIKE', '%'.$search.'%')
+                    ->orWhere('email', 'LIKE', '%' . $search . '%');
+            });
+        }
+
+        // Check status
+        if($status = $request->input('status'))
+        {
+            $users->where('status', '=', $status);
+        }
+
+        return view('users.home', ['users' => $users->paginate(20)]);
     }
 
     /**
