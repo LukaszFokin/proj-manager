@@ -21,6 +21,9 @@
             <li class="{{ getActive('users') }}">
                 <a href="{{ url('users') }}"><i class="fa fa-users"></i> <span>Users</span></a>
             </li>
+            <li class="{{ getActive('projects') }}">
+                <a href="{{ url('projects') }}"><i class="glyphicon glyphicon-briefcase"></i> <span>Projects</span></a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -18,6 +18,13 @@ Breadcrumbs::register('userEdit', function($breadcrumbs, $user)
     $breadcrumbs->push($user->name);
 });
 
+// Home > Projects
+Breadcrumbs::register('projects', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Projects', url('projects'));
+});
+
+
 /*
 
 // Home > About

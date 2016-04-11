@@ -16,3 +16,6 @@ Route::get('/', 'HomeController@index');
 
 /* Users crud route */
 Route::resource('users', 'UserController');
+
+/* Projects crud route */
+Route::resource('projects', 'ProjectsController');
