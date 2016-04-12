@@ -18,4 +18,4 @@ Route::get('/', 'HomeController@index');
 Route::resource('users', 'UserController');
 
 /* Projects crud route */
-Route::resource('projects', 'ProjectsController');
+Route::resource('projects', 'ProjectController');
