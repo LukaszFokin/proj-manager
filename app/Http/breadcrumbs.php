@@ -15,8 +15,22 @@ Breadcrumbs::register('users', function($breadcrumbs) {
 Breadcrumbs::register('userEdit', function($breadcrumbs, $user)
 {
     $breadcrumbs->parent('users');
-    $breadcrumbs->push($user->name);
+    $breadcrumbs->push($user->name? $user->name : 'New');
 });
+
+// Home > Projects
+Breadcrumbs::register('projects', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Projects', url('projects'));
+});
+
+// Home > Projects -> [Project]
+Breadcrumbs::register('projectEdit', function($breadcrumbs, $project) {
+    $breadcrumbs->parent('projects');
+    $breadcrumbs->push($project->name? $project->name : 'New');
+});
+
+
 
 /*
 
