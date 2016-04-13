@@ -30,35 +30,14 @@ Breadcrumbs::register('projectEdit', function($breadcrumbs, $project) {
     $breadcrumbs->push($project->name? $project->name : 'New');
 });
 
-
-
-/*
-
-// Home > About
-Breadcrumbs::register('about', function($breadcrumbs)
-{
+// Home > Phases
+Breadcrumbs::register('phases', function($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('About', '');
+    $breadcrumbs->push('Phases', url('phases'));
 });
 
-// Home > Blog
-Breadcrumbs::register('blog', function($breadcrumbs)
-{
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Blog', '');
+// Home > Phases -> [Phase]
+Breadcrumbs::register('phaseEdit', function($breadcrumbs, $phase) {
+    $breadcrumbs->parent('projects');
+    $breadcrumbs->push($phase->name? $phase->name : 'New');
 });
-
-// Home > Blog > [Category]
-Breadcrumbs::register('category', function($breadcrumbs)
-{
-    $breadcrumbs->parent('blog');
-    $breadcrumbs->push('oi', 'testeteste');
-});
-
-// Home > Blog > [Category] > [Page]
-Breadcrumbs::register('page', function($breadcrumbs, $page)
-{
-    $breadcrumbs->parent('category', $page->category);
-    $breadcrumbs->push($page->title, '');
-});
-*/

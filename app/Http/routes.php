@@ -19,3 +19,8 @@ Route::resource('users', 'UserController');
 
 /* Projects crud route */
 Route::resource('projects', 'ProjectController');
+
+/* Phases crud route */
+Route::post('phases/add-activity', 'PhaseController@addActivity');
+Route::resource('phases', 'PhaseController');
+
