@@ -19,3 +19,6 @@ Route::resource('users', 'UserController');
 
 /* Projects crud route */
 Route::resource('projects', 'ProjectController');
+
+/* Interface para os Scrum Boards */ 
+Route::resource('boards', 'BoardController');
