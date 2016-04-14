@@ -53,8 +53,10 @@ class PhaseController extends Controller
         $phase = $this->phase->create($request->input());
 
         $activitiesModels = [];
-        foreach($request->input('activities') as $order => $activity)
-            $activitiesModels[] = new Activity(['name' => $activity, 'order' => $order]);
+        if($request->input('activities')) {
+            foreach ($request->input('activities') as $order => $activity)
+                $activitiesModels[] = new Activity(['name' => $activity, 'order' => $order]);
+        }
 
         $phase->activities()->saveMany($activitiesModels);
 
@@ -99,8 +101,10 @@ class PhaseController extends Controller
         $phase = $this->phase->find($id);
 
         $activitiesModels = [];
-        foreach($request->input('activities') as $order => $activity)
-            $activitiesModels[] = new Activity(['name' => $activity, 'order' => $order]);
+        if(count($request->input('activities'))) {
+            foreach ($request->input('activities') as $order => $activity)
+                $activitiesModels[] = new Activity(['name' => $activity, 'order' => $order]);
+        }
 
         // Delete and insert new relations
         $phase->activities()->delete();
@@ -133,7 +137,7 @@ class PhaseController extends Controller
      *
      * @param Request $request
      *
-     * @return string
+     * @return mixed
      */
     public function addActivity(Request $request)
     {
@@ -147,6 +151,13 @@ class PhaseController extends Controller
         return redirect('/phases');
     }
 
+    /**
+     * Get phases project by ajx
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
     public function getProjectPhases(Request $request)
     {
         if($request->ajax())

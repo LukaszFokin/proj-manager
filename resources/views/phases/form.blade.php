@@ -4,7 +4,7 @@
 
 @section('title', 'Phases')
 
-@section('sub-title', "Editing {$phase->name}")
+@section('sub-title', "{$phase->name}")
 
 @section('content')
 

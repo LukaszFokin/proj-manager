@@ -10,6 +10,8 @@
  */
 function convertObjectToArray($toBeConverted, $index, $value, $optionDefault = null)
 {
+    $data = [];
+
     if($optionDefault)
         $data[''] = $optionDefault;
 
