@@ -18,6 +18,9 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MENU</li>
+            <li class="{{ getActive('boards') }}">
+                <a href="{{ url('boards') }}"><i class="fa fa-tasks"></i> <span>Boards</span></a>
+            </li>
             <li class="{{ getActive('users') }}">
                 <a href="{{ url('users') }}"><i class="fa fa-users"></i> <span>Users</span></a>
             </li>

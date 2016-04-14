@@ -16,3 +16,4 @@ Route::get('/', 'HomeController@index');
 
 /* Users crud route */
 Route::resource('users', 'UserController');
+Route::resource('boards', 'BoardController');
