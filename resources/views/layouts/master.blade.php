@@ -18,6 +18,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -258,6 +260,8 @@
 
 <!-- jQuery 2.2.0 -->
 <script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+<!-- jQueryUI-->
+<script src="{{ asset('plugins/jQueryUI/jquery-ui.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->

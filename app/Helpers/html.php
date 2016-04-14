@@ -96,3 +96,36 @@ function getAlertIcon($alert)
     return $icon;
 }
 
+/**
+ * Returns a select option with all projects activated in database
+ *
+ * @param string $name
+ * @param string $label
+ * @param null $selected
+ * @param string $optionDefault
+ *
+ * @return string
+ */
+function getProjectsSelect($name = 'project_id', $label = 'Project', $selected = null, $optionDefault = '<< Choose >>')
+{
+    $projects = \App\Models\Project::where('status', ACTIVATED)->get();
+
+    return BootForm::select($name, $label, convertObjectToArray($projects, 'id', 'name', $optionDefault), $selected);
+}
+
+/**
+ * Returns a select option with all phases stored in database
+ * @param string $name
+ * @param string $label
+ * @param null $selected
+ * @param string $optionDefault
+ *
+ * @return string
+ */
+function getParentPhasesSelect($name = 'parent_id', $label = 'Parent Phase', $selected = null, $projectID = null, $optionDefault = '<< Choose >>')
+{
+    $phases = \App\Models\Phase::where('project_id', $projectID)->whereNull('parent_id')->get();
+
+    return BootForm::select($name, $label, convertObjectToArray($phases, 'id', 'name', $optionDefault), $selected);
+}
+
