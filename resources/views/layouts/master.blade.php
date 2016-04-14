@@ -260,6 +260,8 @@
 
 <!-- jQuery 2.2.0 -->
 <script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+<!-- jQueryUI-->
+<script src="{{ asset('plugins/jQueryUI/jquery-ui.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->

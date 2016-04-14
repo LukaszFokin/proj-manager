@@ -10,6 +10,14 @@ use App\Http\Requests;
 
 class PhaseController extends Controller
 {
+
+    private $phase;
+
+    public function __construct()
+    {
+        $this->phase = new Phase();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +25,7 @@ class PhaseController extends Controller
      */
     public function index()
     {
-        $phases = Phase::paginate(20);
+        $phases = $this->phase->paginate(20);
 
         return view('phases.home', ['phases' => $phases]);
     }
@@ -29,10 +37,7 @@ class PhaseController extends Controller
      */
     public function create()
     {
-        $phase = new Phase();
-        $activities = $phase->activities();
-
-        return view('phases.form', ['phase' => $phase, 'activities' => $activities]);
+        return view('phases.form', ['phase' => $this->phase]);
     }
 
     /**
@@ -43,11 +48,9 @@ class PhaseController extends Controller
      */
     public function store(Request $request)
     {
-        $phase = new Phase();
+        $this->validate($request, $this->phase->getRules());
 
-        $this->validate($request, $phase->getRules());
-
-        $phase = $phase->create($request->input());
+        $phase = $this->phase->create($request->input());
 
         $activitiesModels = [];
         foreach($request->input('activities') as $order => $activity)
@@ -79,11 +82,7 @@ class PhaseController extends Controller
      */
     public function edit($id)
     {
-        $phase = Phase::find($id);
-
-        $activities = $phase->activities()->get();
-
-        return view('phases.form', ['phase' => $phase, 'activities' => $activities]);
+        return view('phases.form', ['phase' => $this->phase->find($id)]);
     }
 
     /**
@@ -95,7 +94,23 @@ class PhaseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, $this->phase->getRules());
+
+        $phase = $this->phase->find($id);
+
+        $activitiesModels = [];
+        foreach($request->input('activities') as $order => $activity)
+            $activitiesModels[] = new Activity(['name' => $activity, 'order' => $order]);
+
+        // Delete and insert new relations
+        $phase->activities()->delete();
+        $phase->activities()->saveMany($activitiesModels);
+
+        $phase->update($request->input());
+
+        $this->addSuccessMessage('Phases updated successfully');
+
+        return redirect('/phases');
     }
 
     /**
@@ -106,9 +121,20 @@ class PhaseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->phase->find($id)->update(['status' => DELETED]);
+
+        $this->addSuccessMessage('Phase deleted successfully');
+
+        return redirect('/phases');
     }
 
+    /**
+     * Get activities by ajax request
+     *
+     * @param Request $request
+     *
+     * @return string
+     */
     public function addActivity(Request $request)
     {
         if($request->ajax())
@@ -116,6 +142,16 @@ class PhaseController extends Controller
             $this->validate($request, ['new_activity' => 'required']);
 
             return response()->view('phases.activity', ['activity' => new Phase(['name' => $request->input('new_activity')])]);
+        }
+
+        return redirect('/phases');
+    }
+
+    public function getProjectPhases(Request $request)
+    {
+        if($request->ajax())
+        {
+            return response(getParentPhasesSelect('parent_id', 'Parent Phase', null, $request->input('project_id')));
         }
 
         return redirect('/phases');

@@ -22,5 +22,6 @@ Route::resource('projects', 'ProjectController');
 
 /* Phases crud route */
 Route::post('phases/add-activity', 'PhaseController@addActivity');
+Route::post('phases/get-project-phases', 'PhaseController@getProjectPhases');
 Route::resource('phases', 'PhaseController');
 

@@ -122,9 +122,9 @@ function getProjectsSelect($name = 'project_id', $label = 'Project', $selected =
  *
  * @return string
  */
-function getParentPhasesSelect($name = 'parent_id', $label = 'Parent Phase', $selected = null, $optionDefault = '<< Choose >>')
+function getParentPhasesSelect($name = 'parent_id', $label = 'Parent Phase', $selected = null, $projectID = null, $optionDefault = '<< Choose >>')
 {
-    $phases = \App\Models\Phase::whereNull('parent_id')->get();
+    $phases = \App\Models\Phase::where('project_id', $projectID)->whereNull('parent_id')->get();
 
     return BootForm::select($name, $label, convertObjectToArray($phases, 'id', 'name', $optionDefault), $selected);
 }

@@ -15,7 +15,9 @@
                 <div class="col-md-6">
                     {!! getProjectsSelect('project_id', 'Project', $phase->project_id) !!}
                     {!! BootForm::text('name', null, $phase->name) !!}
-                    {!! getParentPhasesSelect('parent_id', 'Parent Phase', $phase->parent_id) !!}
+                    <div id="box-parent-phase">
+                        {!! getParentPhasesSelect('parent_id', 'Parent Phase', $phase->parent_id, $phase->project_id) !!}
+                    </div>
                     {!! getStatusSelect('status', $phase->status) !!}
                 </div>
             </div>
@@ -42,7 +44,7 @@
                     <hr>
 
                     <ul class="list-group col-lg-6 activities-list">
-                        @each('phases.activity', $activities, 'activity')
+                        @each('phases.activity',  $phase->activities, 'activity')
                     </ul>
                 </div>
             </div>
@@ -85,6 +87,28 @@
 
         $('body').on('click', '.btn-del-activity', function(){
             $(this).closest('.activity-group').hide();
+        });
+
+        $('#project_id').change(function() {
+            var project_id = $(this).val();
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('phases/get-project-phases') }}',
+                data: {_token: '{{ csrf_token() }}', project_id: project_id},
+                success: function(data) {
+                    $('#box-parent-phase').html(data);
+                },
+            });
+        })
+
+        $('.activities-list').sortable({
+            start: function(event, ui) {
+                wscrolltop = $(window).scrollTop();
+            },
+            sort: function(event, ui) {
+                ui.helper.css({'top' : ui.position.top + wscrolltop + 'px'});
+            }
         });
     </script>
 @stop

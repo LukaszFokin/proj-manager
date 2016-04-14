@@ -36,12 +36,12 @@
                         <th scope="row">{{ $phase->id }}</th>
                         <td>{{ $phase->name }}</td>
                         <td>{{ $phase->project->name }}</td>
-                        <td>{!! getStatusBox($phase->status) !!}</td>
                         <td>
                             @if($phase->parentPhase)
                                 {{ $phase->parentPhase->name }}
                             @endif
                         </td>
+                        <td>{!! getStatusBox($phase->status) !!}</td>
                         <td>
                             @if (!isDeleted($phase->status))
                                 <a href="{{ route('phases.edit', [$phase->id]) }}" class="btn btn-info btn-xs">
