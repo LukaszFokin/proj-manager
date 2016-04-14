@@ -42,7 +42,7 @@
                     <hr>
 
                     <ul class="list-group col-lg-6 activities-list">
-
+                        @each('phases.activity', $activities, 'activity')
                     </ul>
                 </div>
             </div>

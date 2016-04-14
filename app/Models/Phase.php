@@ -56,4 +56,9 @@ class Phase extends BaseModel
     {
         return $this->hasMany('App\Models\Activity');
     }
+
+    public function setParentIdAttribute($name)
+    {
+        $this->attributes['parent_id'] = trim($name) !== '' ? $name : null;
+    }
 }

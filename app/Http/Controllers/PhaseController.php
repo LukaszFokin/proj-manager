@@ -29,7 +29,10 @@ class PhaseController extends Controller
      */
     public function create()
     {
-        return view('phases.form', ['phase' => new Phase()]);
+        $phase = new Phase();
+        $activities = $phase->activities();
+
+        return view('phases.form', ['phase' => $phase, 'activities' => $activities]);
     }
 
     /**
@@ -78,12 +81,9 @@ class PhaseController extends Controller
     {
         $phase = Phase::find($id);
 
-        $a = $phase->activities()->get();
+        $activities = $phase->activities()->get();
 
-        foreach($a as $activity)
-            var_dump($activity->name);
-
-        return view('phases.form', ['phase' => $phase]);
+        return view('phases.form', ['phase' => $phase, 'activities' => $activities]);
     }
 
     /**
@@ -115,7 +115,7 @@ class PhaseController extends Controller
         {
             $this->validate($request, ['new_activity' => 'required']);
 
-            return response()->view('phases.activity', ['activity' => $request->input('new_activity')]);
+            return response()->view('phases.activity', ['activity' => new Phase(['name' => $request->input('new_activity')])]);
         }
 
         return redirect('/phases');

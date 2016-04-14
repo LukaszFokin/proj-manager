@@ -38,6 +38,6 @@ Breadcrumbs::register('phases', function($breadcrumbs) {
 
 // Home > Phases -> [Phase]
 Breadcrumbs::register('phaseEdit', function($breadcrumbs, $phase) {
-    $breadcrumbs->parent('projects');
+    $breadcrumbs->parent('phases');
     $breadcrumbs->push($phase->name? $phase->name : 'New');
 });

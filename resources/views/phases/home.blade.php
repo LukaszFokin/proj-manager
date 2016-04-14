@@ -26,6 +26,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Project</th>
+                <th>Parent Phase</th>
                 <th>Status</th>
                 <th class="col-lg-1">Actions</th>
                 </thead>
@@ -36,6 +37,11 @@
                         <td>{{ $phase->name }}</td>
                         <td>{{ $phase->project->name }}</td>
                         <td>{!! getStatusBox($phase->status) !!}</td>
+                        <td>
+                            @if($phase->parentPhase)
+                                {{ $phase->parentPhase->name }}
+                            @endif
+                        </td>
                         <td>
                             @if (!isDeleted($phase->status))
                                 <a href="{{ route('phases.edit', [$phase->id]) }}" class="btn btn-info btn-xs">
