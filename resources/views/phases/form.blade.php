@@ -4,7 +4,7 @@
 
 @section('title', 'Phases')
 
-@section('sub-title', "Editing {$phase->name}")
+@section('sub-title', "{$phase->name}")
 
 @section('content')
 
@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-md-12">
-            <div class="box">
+            <div class="box" style="margin-top: 20px;">
                 <div class="box-header">
                     <h3 class="box-title">Activities</h3>
                 </div>

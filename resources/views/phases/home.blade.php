@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('breadcrumb', Breadcrumbs::render('users'))
+@section('breadcrumb', Breadcrumbs::render('phases'))
 
 @section('title', 'Phases')
 
@@ -9,7 +9,13 @@
 @section('content')
     <div class="box">
         <div class="box-body">
-
+            {{ BootForm::inline(['route' => 'phases.index', 'method' => 'GET']) }}
+                <div class="form-group">
+                    {!! BootForm::text('name', null, Input::get('name')) !!}
+                    {!! getProjectsSelect('project_id', 'Project', Input::get('project_id')) !!}
+                </div>
+                {!! BootForm::submit('Search', ['style' => 'margin-top:20px;']) !!}
+            {{ BootForm::close() }}
         </div>
     </div>
 
@@ -17,8 +23,7 @@
         <div class="box-body">
             <p class="pull-right">
                 <a href="{{ route('phases.create') }}" class="btn btn-warning btn-md">
-                    <i class="glyphicon glyphicon-briefcase"></i>
-                    Add new phase
+                    <i class="glyphicon glyphicon-pushpin"></i> Add new phase
                 </a>
             </p>
             <table class="table table-striped table-bordered">
@@ -27,6 +32,7 @@
                 <th>Name</th>
                 <th>Project</th>
                 <th>Parent Phase</th>
+                <th>Activities</th>
                 <th>Status</th>
                 <th class="col-lg-1">Actions</th>
                 </thead>
@@ -41,6 +47,7 @@
                                 {{ $phase->parentPhase->name }}
                             @endif
                         </td>
+                        <td>{!! implode('<br />', convertObjectToArray($phase->activities, 'id', 'name')) !!}</td>
                         <td>{!! getStatusBox($phase->status) !!}</td>
                         <td>
                             @if (!isDeleted($phase->status))
@@ -58,7 +65,7 @@
             </table>
 
             <div class="pull-right">
-                {!! $phases->render() !!}
+                {!! $phases->appends(Input::get())->render() !!}
             </div>
         </div>
     </div>
