@@ -21,13 +21,21 @@ class PhaseController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $phases = $this->phase->paginate(20);
+        $phases = $this->phase;
 
-        return view('phases.home', ['phases' => $phases]);
+        if($name = $request->input('name'))
+            $phases = $phases->where('name', 'LIKE', '%'.$request->input('name').'%');
+
+        if($projectId = $request->input('project_id'))
+            $phases = $phases->where('project_id', '=', $request->input('project_id', ''));
+
+        return view('phases.home', ['phases' => $phases->paginate(20)]);
     }
 
     /**

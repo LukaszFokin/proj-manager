@@ -9,15 +9,12 @@
 @section('content')
     <div class="box">
         <div class="box-body">
-            {{ BootForm::inline(['route' => 'users.index', 'method' => 'GET']) }}
-            <div class="form-group">
-                {{ Form::label('Name') }}
-                {!! Form::text('search', Input::get('search'), ['class' => 'form-control']) !!}
-
-
-                {!! getProjectsSelect() !!}
-            </div>
-            {!! BootForm::submit('Search') !!}
+            {{ BootForm::inline(['route' => 'phases.index', 'method' => 'GET']) }}
+                <div class="form-group">
+                    {!! BootForm::text('name', null, Input::get('name')) !!}
+                    {!! getProjectsSelect('project_id', 'Project', Input::get('project_id')) !!}
+                </div>
+                {!! BootForm::submit('Search', ['style' => 'margin-top:20px;']) !!}
             {{ BootForm::close() }}
         </div>
     </div>
@@ -68,7 +65,7 @@
             </table>
 
             <div class="pull-right">
-                {!! $phases->render() !!}
+                {!! $phases->appends(Input::get())->render() !!}
             </div>
         </div>
     </div>
