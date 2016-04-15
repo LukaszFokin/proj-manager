@@ -5,17 +5,17 @@
  * @todo Mudar o formato para objeto quando estiver concluido o db
  */
 ?>
-<div class="box box-warning box-solid box-board item-drag " boardid="{{$board['id']}}">
+<div class="box box-success box-solid box-board item-drag " boardid="{{$board['id']}}">
 	<div class="box-header with-border">
     	<h3 class="box-title">{{$board['title']}}</h3>
 		<div class="box-tools pull-right">
 			<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
 	</div>
-	<div class="box-body">Texto referente à {{ $board['title'] }}</div>
+	<div class="box-body">Descrição da board aqui..... {{ $board['title'] }}</div>
 </div>
 
-<div id='board{{$board['id']}}' class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div id='board{{$board['id']}}' class="modal fade bs-example-modal-lg board-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 		<div class="modal-header">
@@ -33,55 +33,43 @@
 			</div>
 			<div class="row">
 				<div class="col-md-10">	
-					<p>Descrição da Tarefa </p>
 					<div class="row">
 						<div class="col-md-5">
-							@include('boards.listmembers')	
+							Aqui os membros
 						</div>
-						<div class="col-md-7">
-							
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h4>Informações do andamento da atividade</h4>
 						</div>
-						
+					</div>
+					<div class="row">
+						<div class="col-md-12 comments box-footer">
+				              <form action="" method="post">
+				                <div class="pull-left image">
+					                @if(Auth::user()->image)
+					                    {{ Html::image(asset("img/users/".Auth::user()->image), Auth::user()->name, ['class' => 'img-circle']) }}
+					                @endif
+				                </div>
+				                <div class="img-push">
+				                  <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+				                </div>
+				              </form>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							@include('boards.timeline')
+						</div>
 					</div>
 				</div>
 				<div class="col-md-2">	
-					<div class="row">
-						<div class="btn btn-group">
-		                  <button type="button" class="btn btn-info">Adicionar</button>
-		                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-		                    <span class="caret"></span>
-		                    <span class="sr-only">Toggle Dropdown</span>
-		                  </button>
-		                  <ul class="dropdown-menu" role="menu">
-		                    <li><a href="#">Membros</a></li>
-		                    <li><a href="#">Etiquetas</a></li>
-		                    <li><a href="#">Checklist</a></li>
-		                    <li class="divider"></li>
-		                    <li><a href="#">Anexos</a></li>
-		                  </ul>
-		                </div>
-					</div>
-					<div class="row">
-						<div class="btn btn-group">
-		                  <button type="button" class="btn btn-info">Ações</button>
-		                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-		                    <span class="caret"></span>
-		                    <span class="sr-only">Toggle Dropdown</span>
-		                  </button>
-		                  <ul class="dropdown-menu" role="menu">
-		                    <li><a href="#">Mover</a></li>
-		                    <li><a href="#">Copiar</a></li>
-		                    <li><a href="#">Assinar</a></li>
-		                    <li><a href="#">Arquivar</a></li>
-		                  </ul>
-		                </div>
-					</div>				
+					@include('boards.actions')			
 				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
         	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        	<button type="button" class="btn btn-primary">Save changes</button>
 		</div>
     </div>
   </div>
