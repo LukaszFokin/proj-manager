@@ -27,6 +27,9 @@
             <li class="{{ getActive('phases') }}">
                 <a href="{{ url('phases') }}"><i class="glyphicon glyphicon-pushpin"></i> <span>Phases</span></a>
             </li>
+             <li class="{{ getActive('boards') }}">
+                <a href="{{ url('boards') }}"><i class="fa fa-tasks"></i> <span>Boards</span></a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
