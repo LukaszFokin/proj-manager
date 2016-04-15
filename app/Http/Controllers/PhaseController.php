@@ -15,6 +15,7 @@ class PhaseController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
         $this->phase = new Phase();
     }
 
