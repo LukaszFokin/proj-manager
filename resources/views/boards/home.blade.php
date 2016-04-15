@@ -16,7 +16,6 @@
 	    <div class="row">
 	        <div class="col-md-3 coluna">
 	        	@each('boards.board', array(array('id'=>'1','title'=>'Primeira Board'),array('id'=>'2','title'=>'Segunda Board')), 'board')
-
 	        </div>
 	        <div class="col-md-3  coluna"></div>
 	        <div class="col-md-3  coluna">
