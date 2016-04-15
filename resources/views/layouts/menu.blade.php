@@ -27,7 +27,23 @@
             <li class="{{ getActive('phases') }}">
                 <a href="{{ url('phases') }}"><i class="glyphicon glyphicon-pushpin"></i> <span>Phases</span></a>
             </li>
-             <li class="{{ getActive('boards') }}">
+
+            <li class="treeview {{ getActive('(task|task-status)') }}">
+                <a href="#">
+                    <i class="glyphicon glyphicon-flag"></i> <span>Tasks Config</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ getActive('task-status') }}">
+                        <a href="{{ url('tasks-status') }}"> <i class="fa fa-info"></i> Status</a>
+                    </li>
+                    <li class="{{ getActive('tasks') }}">
+                        <a href="{{ url('tasks') }}"> <i class="fa fa-sticky-note"></i> Tasks</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="{{ getActive('boards') }}">
                 <a href="{{ url('boards') }}"><i class="fa fa-tasks"></i> <span>Boards</span></a>
             </li>
         </ul>

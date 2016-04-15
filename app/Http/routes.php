@@ -27,3 +27,6 @@ Route::resource('phases', 'PhaseController');
 
 /* Projects crud route */
 Route::resource('boards', 'BoardController');
+
+/* Tasks route */
+Route::resource('tasks-status', 'TaskStatusController');
