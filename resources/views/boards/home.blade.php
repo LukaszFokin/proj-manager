@@ -10,16 +10,8 @@
 <div class="box">
 	<div class="box-body">	
 		<div class="board-phases row-horizon">
-	    	@each('boards.phases', 
-	    	array(
-	    		array('id'=>'1','title'=>'Primeira Board'),
-	    		array('id'=>'1','title'=>'Primeira Board'),
-	    		array('id'=>'1','title'=>'Primeira Board'),
-	    		array('id'=>'1','title'=>'Primeira Board'),
-	    		array('id'=>'1','title'=>'Primeira Board'),
-	    		array('id'=>'1','title'=>'Primeira Board'),
-	    		array('id'=>'2','title'=>'Segunda Board')
-	    		), 'phase')
+	    	@each('boards.phases',$task_status, 'status')
+			
 	    </div>
 	</div>
 </div>

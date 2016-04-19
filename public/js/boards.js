@@ -5,6 +5,7 @@ $(document).ready(function() {
 	$(".coluna").sortable(
 		{
 			connectWith:".coluna",
+			placeholder: "board-placeholder ui-corner-all",
 			start: function(event, ui) {
 		        wscrolltop = $(window).scrollTop();
 		    },

@@ -8,8 +8,8 @@
  */ 
 ?>
 <div class="board-phase col-sm-3">
-	<h4>titulo</h4>
+	<h4>{{$status->name}}</h4>
    	<div class="coluna">
-	   	@each('boards.board', array(array('id'=>'1','title'=>'Primeira Board'),array('id'=>'2','title'=>'Segunda Board')), 'board')
+	   	@each('boards.board',$status->tasks->all(), 'board')
    	</div>
 </div>
