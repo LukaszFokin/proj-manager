@@ -5,7 +5,7 @@
  * @todo Mudar o formato para objeto quando estiver concluido o db
  */
 ?>
-<div class="box box-success box-solid box-board item-drag " boardid="{{$board['id']}}">
+<div class="box box-success box-solid box-board item-drag" id="{{$board->id}}">
 	<div class="box-header with-border">
     	<h3 class="box-title">{{$board->name}}</h3>
 		<div class="box-tools pull-right">
@@ -15,7 +15,7 @@
 	<div class="box-body">{{$board->description}}</div>
 </div>
 
-<div id='board{{$board['id']}}' class="modal fade bs-example-modal-lg board-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div id='board{{$board->id}}' class="modal fade bs-example-modal-lg board-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 		<div class="modal-header">
@@ -74,3 +74,5 @@
     </div>
   </div>
 </div>
+
+

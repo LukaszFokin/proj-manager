@@ -30,8 +30,18 @@ class BoardController extends Controller
      */
     public function index(Request $request)
     {   
-
         return view('boards.home',['task_status'=>$this->task_status->all()]);
     }
 
+
+    public function changestatus(Request $request)
+    {
+        if($request->ajax())
+        {
+            //atualiza status da Tarefa
+            $id = $request->input('task_id');
+            $status= $request->input('task_new_status');
+            $task = Task::where('id', $id)->update(['task_status_id'=>$status]);
+        }
+    }
 }
