@@ -27,3 +27,4 @@ Route::resource('phases', 'PhaseController');
 
 /* Projects crud route */
 Route::resource('boards', 'BoardController');
+Route::post('boards/changestatus', 'BoardController@changestatus');
