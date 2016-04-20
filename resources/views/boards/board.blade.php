@@ -11,15 +11,7 @@
 		<div class="box-tools pull-right">
 			<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
-		<div>
-			<span class="label pull-right bg-green">LABEL</span>	
-			<span class="label pull-right bg-red">LABEL</span>
-			<span class="label pull-right bg-blue">LABEL</span>
-		</div>
 	</div>
-	
-	
-
 	<div class="box-body">{{$board->description}}</div>
 </div>
 
