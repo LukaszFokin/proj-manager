@@ -16,13 +16,8 @@
                 <div class="col-md-6">
                     {!! getProjectsSelect('project_id', 'Project', $project_label->project_id) !!}
                     {!! BootForm::text('name', null, $project_label->name) !!}
-                    <div class="input-group my-colorpicker2 colorpicker-element">
-                        {!! BootForm::text('color', null, $project_label->color) !!}
+                    {!! BootForm::text('color', null, $project_label->color) !!}
 
-                        <div class="input-group-addon">
-                            <i></i>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
