@@ -15,7 +15,7 @@ class CreateTableProjectLabels extends Migration
         Schema::create('project_labels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100);
-            $table->string('color',10);
+            $table->string('color',30);
             $table->integer('project_id')->unsigned()->nullable();
 
             $table->foreign('project_id')->references('id')->on('projects');
