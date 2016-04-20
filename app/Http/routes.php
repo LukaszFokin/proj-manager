@@ -28,3 +28,8 @@ Route::resource('phases', 'PhaseController');
 /* Projects crud route */
 Route::resource('boards', 'BoardController');
 Route::post('boards/changestatus', 'BoardController@changestatus');
+
+
+/* Project Labels crud route */
+Route::post('project_labels/add-activity', 'ProjectLabelsController@addActivity');
+Route::resource('project_labels', 'ProjectLabelsController');
