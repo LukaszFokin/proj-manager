@@ -29,6 +29,6 @@ class CreateTableTasksLabels extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('tasks_labels');
     }
 }
