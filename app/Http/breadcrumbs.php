@@ -41,3 +41,9 @@ Breadcrumbs::register('phaseEdit', function($breadcrumbs, $phase) {
     $breadcrumbs->parent('phases');
     $breadcrumbs->push($phase->name? $phase->name : 'New');
 });
+
+// Home > Tasks Status
+Breadcrumbs::register('taskStatus', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Task Status', url('tasks-status'));
+});
