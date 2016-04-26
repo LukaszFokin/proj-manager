@@ -27,7 +27,7 @@ class TaskStatusController extends Controller
      */
     public function index()
     {
-        return view('task_status.home', ['taskStatus' => $this->model->all()]);
+        return view('tasks_status.home', ['taskStatus' => $this->model->all()]);
     }
 
     /**
@@ -37,7 +37,7 @@ class TaskStatusController extends Controller
      */
     public function create()
     {
-        return view('task_status.form', ['taskStatus' => $this->model]);
+        return view('tasks_status.form', ['taskStatus' => $this->model]);
     }
 
     /**
@@ -76,7 +76,7 @@ class TaskStatusController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('tasks_status.form', ['taskStatus' => $this->model->find($id)]);
     }
 
     /**
@@ -88,7 +88,13 @@ class TaskStatusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, $this->model->getRules());
+
+        $this->model->find($id)->update($request->input());
+
+        $this->addSuccessMessage('Task status updated successfully');
+
+        return redirect('/tasks-status');
     }
 
     /**

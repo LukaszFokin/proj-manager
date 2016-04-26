@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Models;
 use App\Base\Models\BaseModel;
+
 class TaskStatus extends BaseModel
 {
     public $table = 'tasks_status';

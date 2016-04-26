@@ -29,5 +29,5 @@ Route::resource('phases', 'PhaseController');
 Route::resource('boards', 'BoardController');
 Route::post('boards/changestatus', 'BoardController@changestatus');
 
-/* Tasks Status crud rout */
+/* Tasks Status crud route */
 Route::resource('tasks-status', 'TaskStatusController');

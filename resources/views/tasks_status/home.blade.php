@@ -8,10 +8,6 @@
 
 @section('content')
     <div class="box">
-
-    </div>
-
-    <div class="box">
         <div class="box-body">
             <p class="pull-right">
                 <a href="{{ route('tasks-status.create') }}" class="btn btn-warning btn-md">
