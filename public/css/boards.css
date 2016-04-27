@@ -1,32 +1,73 @@
-
 .board-phases {
 
 }
-.board-phases .board-phase{
-	 
+
+.board-phases .board-phase-list {
+    width: 270px;
+    margin: 0 5px;
+    height: 82%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 !important;
 }
 
-.board-phases .coluna{
+.board-phases .board-phase-list .board-phase-list-content {
+    background: #e2e4e6;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    white-space: normal;
+    max-height: 80%;
+    height: auto;
+    padding: 0 !important;
+}
+
+.board-phases .board-phase-list .board-phase-list-content .board-phase-list-header {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    position: relative;
+    min-height: 18px;
+}
+
+.board-phases .board-phase-column {
 	min-height: 100px !important;
+    overflow-y: overlay;
+    margin-right: 2px;
+    padding: 0 9px 0 5px;
 }
 
 .board-phases .board-placeholder {
-    border: 1px dotted black;
-    height: 50px;
+    background-color: #646E70;
     margin: 20px 0px;
+    border-radius: 5px;
 }
 
+.box-board {
+    overflow: hidden;
+    position: relative;
+    border: none !important;
+    width: 95% !important;
+}
 
 /*Ajustando regra do botão que não esatava validando */
 .btn-group>.btn+.dropdown-toggle {
     height: 34px;
 }
 
-.boardcontent{
+.boardcontent {
 	padding-top: 0px !important;
 }
 
-.board-modal .comments .image img{
+.board-modal .comments .image img {
     width: 100%;
     max-width: 45px;
     height: auto;

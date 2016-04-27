@@ -5,14 +5,8 @@
  * @todo Mudar o formato para objeto quando estiver concluido o db
  */
 ?>
-<div class="box box-success box-solid box-board item-drag" id="{{$board->id}}">
-	<div class="box-header with-border">
-    	<h3 class="box-title">{{$board->name}}</h3>
-		<div class="box-tools pull-right">
-			<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-		</div>
-	</div>
-	<div class="box-body">{{$board->description}}</div>
+<div class="box box-board item-drag" id="{{ $board->id }}">
+	<div class="box-body board">#{{ $board->id }} - {{ $board->name }}</div>
 </div>
 
 <div id='board{{$board->id}}' class="modal fade bs-example-modal-lg board-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">

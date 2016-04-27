@@ -5,15 +5,12 @@
 {{Html::style('css/boards.css')}}
 {{Html::style('css/bootstrap-horizon.css')}}
 
+@section('body-class', 'fixed sidebar-collapse')
 
 @section('content')
-<div class="box">
-	<div class="box-body">	
-		<div class="board-phases row-horizon">
-	    	@each('boards.phases',$task_status, 'status')
-			
-	    </div>
-	</div>
+
+<div class="board-phases row-horizon">
+    @each('boards.phases',$task_status, 'status')
 </div>
 
 @endsection
@@ -24,12 +21,13 @@ $(document).ready(function() {
     $(".box-board").dblclick(function() {
   		$('#board'+$(this).attr('id')).modal()
 	});
-	$(".coluna").sortable(
+	$(".board-phase-column").sortable(
 		{
-			connectWith:".coluna",
+			connectWith:".board-phase-column",
 			placeholder: "board-placeholder ui-corner-all",
 			start: function(event, ui) {
 		        wscrolltop = $(window).scrollTop();
+                ui.placeholder.height(ui.item.height());
 		    },
 		    sort: function(event, ui) {                   
 		        ui.helper.css({'top' : ui.position.top + wscrolltop + 'px'});

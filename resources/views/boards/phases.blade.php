@@ -7,9 +7,14 @@
  * 
  */ 
 ?>
-<div class="board-phase col-sm-3" id="{{$status->id}}">
-	<h4>{{$status->name}}</h4>
-   	<div class="coluna">
-	   	@each('boards.board',$status->tasks->all(), 'board')
-   	</div>
+<div class="board-phase-list">
+	<div class="board-phase-list-content col-sm-12" id="{{$status->id}}">
+		<div class="board-phase-list-header">
+			<h4>{{$status->name}}</h4>
+		</div>
+
+		<div class="board-phase-column">
+			@each('boards.board',$status->tasks->all(), 'board')
+		</div>
+	</div>
 </div>
