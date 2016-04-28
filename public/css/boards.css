@@ -8,7 +8,6 @@
     height: 82%;
     display: inline-block;
     vertical-align: top;
-    padding: 0 !important;
 }
 
 .board-phases .board-phase-list .board-phase-list-content {
@@ -23,39 +22,57 @@
     flex-direction: column;
     position: relative;
     white-space: normal;
-    max-height: 80%;
+    max-height: 95%;
     height: auto;
     padding: 0 !important;
 }
 
 .board-phases .board-phase-list .board-phase-list-content .board-phase-list-header {
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    padding: 8px 10px;
+    white-space: normal;
     position: relative;
-    min-height: 18px;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: bold !important;
+}
+
+.board-phase-list-header h4 {
+    margin-bottom: 0;
 }
 
 .board-phases .board-phase-column {
-	min-height: 100px !important;
     overflow-y: overlay;
-    margin-right: 2px;
-    padding: 0 9px 0 5px;
+    padding: 5px;
+}
+
+.board-phases .board-phase-column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.board-phases .board-phase-column::-webkit-scrollbar-track {
+    background-color: #d8dadc;
+    border-radius: 5px;
+}
+
+.board-phases .board-phase-column::-webkit-scrollbar-thumb {
+    background-color: #c7cacc;
+    border-radius: 5px;
 }
 
 .board-phases .board-placeholder {
     background-color: #646E70;
-    margin: 20px 0px;
     border-radius: 5px;
+}
+
+.box-board .box-title {
+    font-size: 15px !important;
 }
 
 .box-board {
     overflow: hidden;
     position: relative;
     border: none !important;
-    width: 95% !important;
+    width: 97% !important;
+    margin-bottom: 5px !important;
 }
 
 /*Ajustando regra do botão que não esatava validando */
@@ -64,7 +81,7 @@
 }
 
 .boardcontent {
-	padding-top: 0px !important;
+    padding-top: 0px !important;
 }
 
 .board-modal .comments .image img {
@@ -72,6 +89,3 @@
     max-width: 45px;
     height: auto;
 }
-
-
-

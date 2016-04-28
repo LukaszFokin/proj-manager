@@ -5,8 +5,10 @@
  * @todo Mudar o formato para objeto quando estiver concluido o db
  */
 ?>
-<div class="box box-board item-drag" id="{{ $board->id }}">
-	<div class="box-body board">#{{ $board->id }} - {{ $board->name }}</div>
+<div class="box box-solid box-board item-drag" id="{{$board->id}}">
+	<div class="box-header with-border">
+    	<span class="box-title">#{{ $board->id }} - {{ $board->name }}</span>
+	</div>
 </div>
 
 <div id='board{{$board->id}}' class="modal fade bs-example-modal-lg board-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -26,7 +28,7 @@
               	</div>
 			</div>
 			<div class="row">
-				<div class="col-md-10">	
+				<div class="col-md-10">
 					<div class="row">
 						<div class="col-md-5">
 							Aqui os membros
@@ -57,8 +59,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-2">	
-					@include('boards.actions')			
+				<div class="col-md-2">
+					@include('boards.actions')
 				</div>
 			</div>
 		</div>

@@ -10,7 +10,7 @@
 @section('content')
 
 <div class="board-phases row-horizon">
-    @each('boards.phases',$task_status, 'status')
+    @each('boards.phases', $task_status, 'status')
 </div>
 
 @endsection
@@ -18,13 +18,14 @@
 @section('page-script')
 <script>
 $(document).ready(function() {
-    $(".box-board").dblclick(function() {
+    $('.box-board').dblclick(function() {
   		$('#board'+$(this).attr('id')).modal()
 	});
-	$(".board-phase-column").sortable(
+	$('.board-phase-column').sortable(
 		{
-			connectWith:".board-phase-column",
-			placeholder: "board-placeholder ui-corner-all",
+			connectWith: '.board-phase-column',
+            scroll : false,
+			placeholder: 'board-placeholder ui-corner-all',
 			start: function(event, ui) {
 		        wscrolltop = $(window).scrollTop();
                 ui.placeholder.height(ui.item.height());
@@ -39,7 +40,7 @@ $(document).ready(function() {
                     $.ajax({
 		                type: 'POST',
 		                url: '{{ url('boards/changestatus') }}',
-		                data: {_token: '{{ csrf_token() }}', task_id: task_id,task_new_status: task_new_status, },
+		                data: {_token: '{{ csrf_token() }}', task_id: task_id,task_new_status: task_new_status },
 		                success: function(data) {
 		                    console.log(data);
 		                },

@@ -31,3 +31,6 @@ Route::post('boards/changestatus', 'BoardController@changestatus');
 
 /* Tasks Status crud route */
 Route::resource('tasks-status', 'TaskStatusController');
+
+/* Tasks route */
+Route::resource('tasks', 'TaskController');
