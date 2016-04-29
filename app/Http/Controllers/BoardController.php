@@ -13,13 +13,13 @@ use App\Http\Requests;
 class BoardController extends Controller
 {
 	private $board;
-    private $task_status;
+    private $taskStatus;
 
     public function __construct()
     {
         parent::__construct();
         $this->board = new Board();
-        $this->task_status = new TaskStatus();
+        $this->taskStatus = new TaskStatus();
     }
 
 
@@ -30,7 +30,7 @@ class BoardController extends Controller
      */
     public function index(Request $request)
     {   
-        return view('boards.home',['task_status'=>$this->task_status->all()]);
+        return view('boards.home', ['taskStatus' => $this->taskStatus->all()]);
     }
 
 

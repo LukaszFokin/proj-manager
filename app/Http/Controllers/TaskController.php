@@ -47,6 +47,13 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, $this->model->getRules());
+
+        $this->model->create($request->input());
+
+        $task = $this->model->find($request->input('id'));
+
+        if($request->ajax())
+            return view('boards.board', ['task' => $task]);
     }
 
     /**

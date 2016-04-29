@@ -23,7 +23,7 @@ class Task extends BaseModel
 	public function getRules()
     {
         return [
-            'id' => 'required|unique',
+            'id' => 'required|unique:tasks',
             'name' => 'required',
             'task_status_id' => 'required'
         ];

@@ -1,16 +1,16 @@
 <div class="board-phase-list">
-	<div class="board-phase-list-content col-sm-12" id="{{$status->id}}">
+	<div class="board-phase-list-content col-sm-12" id="{{ $taskStatus->id }}">
 		<div class="board-phase-list-header">
 			<h4>
-				<button type="button" class="btn btn-circle-micro btn-add-activity" data-toggle="modal" data-target="#modal-new-board" data-id="{{ $status->id }}">
+				<button type="button" class="btn btn-circle-micro btn-add-activity" data-toggle="modal" data-target="#modal-new-board" data-id="{{ $taskStatus->id }}">
 					<i class="fa fa-lg fa-plus-circle"></i>
 				</button>
-				{{$status->name}}
+				{{ $taskStatus->name }}
 			</h4>
 		</div>
 
-		<div class="board-phase-column">
-			@each('boards.board',$status->tasks->all(), 'board')
+		<div class="board-phase-column" id="board-phase-column-{{ $taskStatus->id }}">
+			@each('boards.board', $taskStatus->tasks->all(), 'task')
 		</div>
 
 		<div class="modal fade" id="modal-new-board" tabindex="-1" role="dialog">
@@ -37,47 +37,3 @@
 		</div>
 	</div>
 </div>
-
-@section('page-script')
-	<script>
-		$(document).ready(function() {
-			$('#modal-new-board').on('show.bs.modal', function(e) {
-				$(this).find('input[name="task_status_id"]').val($(e.relatedTarget).data('id'));
-			});
-
-			$('#btn-add-task').click(function(){
-				var form = $('form[name="add-task"]');
-				var button = $(this);
-
-				button.button('loading');
-
-				$.ajax({
-					type: 'POST',
-					url: '{{ route('tasks.store') }}',
-					data: {
-						_token: '{{ csrf_token() }}',
-						id: $('input[name="id"]').val(),
-						name: $('input[name="name"]').val(),
-						description: $('input[name="description"]').text(),
-						task_status_id: $('input[name="task_status_id"]').val()
-					},
-					success: function(data) {
-
-					},
-					error: function(data) {
-						var span = $('<span></span>').addClass('help-block');
-
-						$.each(data.responseJSON, function(input, error) {
-							var div = $('input[name="'+input+'"]').closest('.form-group');
-							div.addClass('has-error');
-							div.append(span.html(error));
-						});
-					},
-					complete: function() {
-						button.button('reset');
-					},
-				});
-			});
-		})
-	</script>
-@stop
