@@ -32,7 +32,7 @@
               	</div>
 			</div>
 			<div class="row">
-				<div class="col-md-10">	
+				<div class="col-md-9">	
 					<div class="row">
 						<div class="col-md-5">
 							Aqui os membros
@@ -59,12 +59,14 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
+							<!--
 							@include('boards.timeline')
+							-->
 						</div>
 					</div>
 				</div>
-				<div class="col-md-2">	
-					@include('boards.actions')			
+				<div class="col-md-3 actions">	
+					@include('boards.actions')
 				</div>
 			</div>
 		</div>

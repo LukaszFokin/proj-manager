@@ -45,4 +45,15 @@ class Project extends BaseModel
     {
         return $this->hasMany('App\Models\Phase');
     }
+
+
+    /**
+     * Get phases's project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function labels()
+    {
+        return $this->hasMany('App\Models\ProjectLabel');
+    }    
 }
