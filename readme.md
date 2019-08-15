@@ -1,4 +1,4 @@
-# Proj Managera
+# aProj Managera
 
 Project Manager is a project management system.
 
